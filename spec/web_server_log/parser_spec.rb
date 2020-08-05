@@ -28,7 +28,7 @@ describe WebServerLog::Parser do
     end
 
     it 'fills repository' do
-      expect { subject }.to change(repository.products, :count).by(3)
+      expect { subject }.to change(repository.send(:products), :count).by(3)
     end
   end
 end

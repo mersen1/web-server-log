@@ -19,9 +19,10 @@ module WebServerLog
     end
 
     def execute
-      # file.each do |line|
-      #   path = parser.execute(line)
-      # end
+      file.each do |line|
+        path = parser.execute(line)
+        repository.add_if_not_exists(path)
+      end
     end
 
     private
