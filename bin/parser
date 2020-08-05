@@ -1,6 +1,25 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-file_path = ARGV[0]
+require './lib/web_server_log'
+require './lib/web_server_log/services/parsers/ordinary_parser'
+require './lib/web_server_log/services/parsers/uniq_parser'
 
-puts file_path
+require './lib/web_server_log/presenters/line_entities/ordinary_presenter'
+
+file_path = ARGV[0]
+presenter = WebServerLog::Presenters::LineEntities::OrdinaryPresenter
+
+puts WebServerLog::Parser.execute(
+  file_path,
+  WebServerLog::Services::Parsers::OrdinaryParser,
+  presenter
+)
+
+puts '=' * 50
+
+puts WebServerLog::Parser.execute(
+  file_path,
+  WebServerLog::Services::Parsers::UniqParser,
+  presenter
+)

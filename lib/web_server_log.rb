@@ -20,5 +20,4 @@ require_relative 'web_server_log/services/parsers/uniq_parser'
 require_relative 'web_server_log/services/line_entities/increment_visits_count'
 require_relative 'web_server_log/services/line_repositories/descending_visits_sorter'
 
-
 require_relative 'web_server_log/presenters/line_entities/ordinary_presenter'
