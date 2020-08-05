@@ -3,9 +3,9 @@
 module WebServerLog
   class Parser
     class << self
-      def execute(file_path)
+      def execute(file_path, parser)
         file = File.open(file_path, 'r')
-        new(file).execute
+        new(file, parser).execute
       ensure
         file.close
       end
@@ -13,14 +13,17 @@ module WebServerLog
 
     private_class_method :new
 
-    def initialize(file)
+    def initialize(file, parser)
       @file = file
+      @parser = parser
     end
 
     def execute
       # TODO
     end
 
-    attr_reader :file
+    private
+
+    attr_reader :file, :parser
   end
 end
