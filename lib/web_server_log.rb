@@ -22,3 +22,4 @@ require_relative 'web_server_log/services/line_repositories/descending_visits_so
 
 require_relative 'web_server_log/presenters/line_entities/base'
 require_relative 'web_server_log/presenters/line_entities/ordinary_presenter'
+require_relative 'web_server_log/presenters/line_entities/uniq_presenter'
