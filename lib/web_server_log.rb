@@ -17,5 +17,8 @@ require_relative 'web_server_log/repositories/line_repository'
 require_relative 'web_server_log/services/parsers/base'
 require_relative 'web_server_log/services/parsers/ordinary_parser'
 require_relative 'web_server_log/services/parsers/uniq_parser'
-
 require_relative 'web_server_log/services/line_entities/increment_visits_count'
+require_relative 'web_server_log/services/line_repositories/descending_visits_orderer'
+
+
+require_relative 'web_server_log/presenters/line_entities/ordinary_presenter'

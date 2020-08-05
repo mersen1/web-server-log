@@ -3,9 +3,9 @@
 module WebServerLog
   class Parser
     class << self
-      def execute(file_path, parser)
+      def execute(file_path, *args)
         file = File.open(file_path, 'r')
-        new(file, parser).execute
+        new(file, *args).execute
       ensure
         file.close
       end
@@ -13,9 +13,10 @@ module WebServerLog
 
     private_class_method :new
 
-    def initialize(file, parser)
+    def initialize(file, parser, presenter)
       @file = file
       @parser = parser
+      @presenter = presenter
     end
 
     def execute
@@ -24,6 +25,7 @@ module WebServerLog
         product = repository.add_if_not_exists(path)
         Services::LineEntities::IncrementVisitsCount.execute(product)
       end
+      presenter.execute(repository.products)
     end
 
     private
@@ -32,6 +34,6 @@ module WebServerLog
       @repository ||= Repositories::LineRepository.new
     end
 
-    attr_reader :file, :parser
+    attr_reader :file, :parser, :presenter
   end
 end

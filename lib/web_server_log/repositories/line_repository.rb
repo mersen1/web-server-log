@@ -3,6 +3,8 @@
 module WebServerLog
   module Repositories
     class LineRepository
+      attr_accessor :products
+
       def initialize
         @products = []
       end
@@ -23,8 +25,6 @@ module WebServerLog
       def find_by_path(product_path)
         products.detect { |product| product.path == product_path }
       end
-
-      attr_accessor :products
     end
   end
 end
