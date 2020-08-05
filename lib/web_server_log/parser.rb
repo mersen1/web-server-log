@@ -19,10 +19,16 @@ module WebServerLog
     end
 
     def execute
-      # TODO
+      # file.each do |line|
+      #   path = parser.execute(line)
+      # end
     end
 
     private
+
+    def repository
+      @repository ||= Repositories::LineRepository.new
+    end
 
     attr_reader :file, :parser
   end

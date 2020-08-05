@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 describe WebServerLog::Parser do
-  describe '.execute' do
-    let(:file_path) { './spec/fixtures/webserver.log' }
-    let(:file) { File.open(file_path) }
-    let(:parser) { WebServerLog::Services::Parsers::OrdinaryParser }
+  let(:file_path) { './spec/fixtures/webserver.log' }
+  let(:file) { File.open(file_path) }
+  let(:parser) { WebServerLog::Services::Parsers::OrdinaryParser }
 
+  describe '.execute' do
     before do
       allow(File).to receive(:open).with(file_path, 'r').and_return(file)
     end
@@ -15,6 +15,20 @@ describe WebServerLog::Parser do
     it 'closes file after execution' do
       subject
       expect(file.closed?).to be_truthy
+    end
+  end
+
+  describe '#execute' do
+    let!(:repository) { WebServerLog::Repositories::LineRepository.new }
+
+    subject { described_class.send(:new, file, parser).execute }
+
+    before do
+      allow_any_instance_of(described_class).to receive(:repository).and_return(repository)
+    end
+
+    it 'fills repository' do
+      expect { subject }.to change(repository.products, :count).by(3)
     end
   end
 end
