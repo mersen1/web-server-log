@@ -5,7 +5,7 @@ module WebServerLog
     module Parsers
       class OrdinaryParser < Base
         def execute
-          # TODO
+          line[%r{\A/[a-z_]+}]
         end
       end
     end

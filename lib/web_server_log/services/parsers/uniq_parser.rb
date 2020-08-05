@@ -5,7 +5,7 @@ module WebServerLog
     module Parsers
       class UniqParser < Base
         def execute
-          # TODO
+          line[%r{\A/[\w/]+}]
         end
       end
     end
