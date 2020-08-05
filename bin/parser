@@ -6,14 +6,14 @@ require './lib/web_server_log/services/parsers/ordinary_parser'
 require './lib/web_server_log/services/parsers/uniq_parser'
 
 require './lib/web_server_log/presenters/line_entities/ordinary_presenter'
+require './lib/web_server_log/presenters/line_entities/uniq_presenter'
 
 file_path = ARGV[0]
-presenter = WebServerLog::Presenters::LineEntities::OrdinaryPresenter
 
 puts WebServerLog::Parser.execute(
   file_path,
   WebServerLog::Services::Parsers::OrdinaryParser,
-  presenter
+  WebServerLog::Presenters::LineEntities::OrdinaryPresenter
 )
 
 puts '=' * 50
@@ -21,5 +21,5 @@ puts '=' * 50
 puts WebServerLog::Parser.execute(
   file_path,
   WebServerLog::Services::Parsers::UniqParser,
-  presenter
+  WebServerLog::Presenters::LineEntities::UniqPresenter
 )
