@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe WebServerLog::Parser do
+describe WebServerLog::Parser do # rubocop:disable Metrics/BlockLength
   let(:file_path) { './spec/fixtures/webserver.log' }
   let(:file) { File.open(file_path) }
   let(:parser) { WebServerLog::Services::Parsers::OrdinaryParser }
@@ -29,6 +29,13 @@ describe WebServerLog::Parser do
 
     it 'fills repository' do
       expect { subject }.to change(repository.send(:products), :count).by(3)
+    end
+
+    it 'increase each product`s visits by 1' do
+      subject
+      repository.send(:products).each do |product|
+        expect(product.visits).to eq(1)
+      end
     end
   end
 end
