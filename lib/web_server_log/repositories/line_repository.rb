@@ -5,8 +5,14 @@ module WebServerLog
     class LineRepository
       attr_accessor :products
 
-      def initialize
+      def initialize(sorter = nil)
         @products = []
+        @sorter = sorter || Services::LineRepositories::DescendingVisitsSorter
+      end
+
+      def sort!
+        self.products = sorter.execute(products)
+        self
       end
 
       def add_if_not_exists(product_path)
@@ -16,6 +22,8 @@ module WebServerLog
       end
 
       private
+
+      attr_reader :sorter
 
       def add(product_path)
         products.push(product = Entities::LineEntity.new(product_path))

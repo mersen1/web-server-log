@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe WebServerLog::Services::LineRepositories::DescendingVisitsOrderer do
+describe WebServerLog::Services::LineRepositories::DescendingVisitsSorter do
   describe '.execute' do
     let(:products) do
       [

@@ -13,10 +13,11 @@ module WebServerLog
 
     private_class_method :new
 
-    def initialize(file, parser, presenter)
+    def initialize(file, parser, presenter, sorter = nil)
       @file = file
       @parser = parser
       @presenter = presenter
+      @sorter = sorter
     end
 
     def execute
@@ -25,15 +26,15 @@ module WebServerLog
         product = repository.add_if_not_exists(path)
         Services::LineEntities::IncrementVisitsCount.execute(product)
       end
-      presenter.execute(repository.products)
+      presenter.execute(repository.sort!.products)
     end
 
     private
 
     def repository
-      @repository ||= Repositories::LineRepository.new
+      @repository ||= Repositories::LineRepository.new(sorter)
     end
 
-    attr_reader :file, :parser, :presenter
+    attr_reader :file, :parser, :presenter, :sorter
   end
 end

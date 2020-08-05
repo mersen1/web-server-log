@@ -3,7 +3,7 @@
 module WebServerLog
   module Services
     module LineRepositories
-      class DescendingVisitsOrderer
+      class DescendingVisitsSorter
         extend Extensions::Executable
 
         def initialize(products)
@@ -11,7 +11,7 @@ module WebServerLog
         end
 
         def execute
-          products
+          products.sort { |a, b| b.visits <=> a.visits }
         end
 
         private
