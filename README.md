@@ -30,3 +30,14 @@ To check specs run:
 ```sh
   rspec
 ```
+# Possible Improvements
+
+Add file validations: incorrect file format, missing file, invalid data structure.
+
+
+# Approaches
+
+To complete the test DDD and TDD approaches were used.
+
+Repository Pattern was used to store line entities, Service Objects were used to handle entity data and Presenters were used to show results correctly. <br />
+Also Template Method and Strategy patterns were used.
