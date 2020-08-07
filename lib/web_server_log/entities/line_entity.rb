@@ -6,7 +6,7 @@ module WebServerLog
       attr_reader :path, :ip
       attr_accessor :visits
 
-      def initialize(path, ip)
+      def initialize(path, ip = nil)
         @path = path
         @ip = ip
         @visits = 0
