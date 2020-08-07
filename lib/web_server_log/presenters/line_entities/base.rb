@@ -8,7 +8,7 @@ module WebServerLog
           def execute(products)
             products
               .map { |product| new(product).execute }
-              .join(' ')
+              .join("\n")
           end
         end
 
