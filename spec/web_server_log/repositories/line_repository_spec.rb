@@ -14,7 +14,7 @@ describe WebServerLog::Repositories::LineRepository do
     end
 
     context 'when such product_path exists' do
-      before { repository.send(:add, product_path) }
+      before { repository.send(:add, product_path, product_ip) }
 
       it { expect { subject }.not_to change(repository.products, :count) }
     end
