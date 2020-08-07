@@ -22,8 +22,8 @@ module WebServerLog
 
     def execute
       file.each do |line|
-        path = parser.execute(line)
-        product = repository.add_if_not_exists(path)
+        path, ip = parser.execute(line)
+        product = repository.add_if_not_exists(path, ip)
         Services::LineEntities::IncrementVisitsCount.execute(product)
       end
       presenter.execute(repository.sort!.products)
