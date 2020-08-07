@@ -6,14 +6,8 @@ describe WebServerLog::Services::Parsers::UniqParser do
 
     subject { described_class.new(line).execute }
 
-    context 'when line has params' do
-      it { is_expected.to eq('/help_page/1') }
-    end
-
-    context 'when line does not have params' do
-      let!(:line) { '/help_page 200.017.277.774' }
-
-      it { is_expected.to eq('/help_page') }
+    it 'returns array with path + ip' do
+      is_expected.to eq(%w[/help_page/1 200.017.277.774])
     end
   end
 end
