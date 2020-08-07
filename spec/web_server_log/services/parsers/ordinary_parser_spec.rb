@@ -7,7 +7,7 @@ describe WebServerLog::Services::Parsers::OrdinaryParser do
     subject { described_class.new(line).execute }
 
     it 'returns array with path' do
-      is_expected. to eq(['/help_page/1'])
+      is_expected.to eq(['/help_page/1'])
     end
   end
 end

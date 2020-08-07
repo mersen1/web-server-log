@@ -5,7 +5,7 @@ module WebServerLog
     module Parsers
       class OrdinaryParser < Base
         def execute
-          line[%r{\A/[a-z_]+}]
+          [path]
         end
       end
     end

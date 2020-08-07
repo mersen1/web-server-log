@@ -16,6 +16,14 @@ module WebServerLog
 
         private
 
+        def path
+          line[%r{\A/[\w/]+}]
+        end
+
+        def ip
+          line[/([0-9]{1,3}[.]){3}[0-9]{1,3}/]
+        end
+
         attr_reader :line
       end
     end

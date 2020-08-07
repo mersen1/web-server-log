@@ -5,7 +5,7 @@ module WebServerLog
     module Parsers
       class UniqParser < Base
         def execute
-          line[%r{\A/[\w/]+}]
+          [path, ip]
         end
       end
     end
