@@ -40,7 +40,7 @@ describe WebServerLog::Parser do # rubocop:disable Metrics/BlockLength
     end
 
     it 'returns sorted string of visits' do
-      is_expected.to eq('/home 2 visits /help_page/1 1 visits /contact 1 visits')
+      is_expected.to eq("/home 2 visits\n/help_page/1 1 visits\n/contact 1 visits")
     end
   end
 end
