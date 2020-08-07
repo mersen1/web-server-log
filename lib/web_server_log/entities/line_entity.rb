@@ -3,11 +3,12 @@
 module WebServerLog
   module Entities
     class LineEntity
-      attr_reader :path
+      attr_reader :path, :ip
       attr_accessor :visits
 
-      def initialize(path)
+      def initialize(path, ip)
         @path = path
+        @ip = ip
         @visits = 0
       end
     end
