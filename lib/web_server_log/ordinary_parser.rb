@@ -5,10 +5,11 @@ module WebServerLog
     def execute
       file.each do |line|
         path, = Services::Parsers::LineParser.execute(line)
-        product = repository.add_if_not_exists(path, nil)
+        product = repository.find_by_path(path)
+        product = repository.add(path, nil) if product.nil?
         Services::LineEntities::IncrementVisitsCount.execute(product)
       end
-      presenter.execute(repository.sort!.products)
+      presenter.execute(repository.sort)
     end
   end
 end
