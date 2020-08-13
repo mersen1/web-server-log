@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe WebServerLog::OrdinaryParser do
+describe WebServerLog::OrdinaryParser do # rubocop:disable Metrics/BlockLength
   let(:file_path) { './spec/fixtures/webserver.log' }
   let(:file) { File.open(file_path) }
   let(:presenter) { WebServerLog::Presenters::LineEntities::OrdinaryPresenter }

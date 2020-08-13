@@ -2,24 +2,17 @@
 # frozen_string_literal: true
 
 require './lib/web_server_log'
-require './lib/web_server_log/services/parsers/ordinary_parser'
-require './lib/web_server_log/services/parsers/uniq_parser'
-
-require './lib/web_server_log/presenters/line_entities/ordinary_presenter'
-require './lib/web_server_log/presenters/line_entities/uniq_presenter'
 
 file_path = ARGV[0]
 
-puts WebServerLog::Parser.execute(
+puts WebServerLog::OrdinaryParser.execute(
   file_path,
-  WebServerLog::Services::Parsers::OrdinaryParser,
   WebServerLog::Presenters::LineEntities::OrdinaryPresenter
 )
 
 puts '=' * 50
 
-puts WebServerLog::Parser.execute(
+puts WebServerLog::UniqParser.execute(
   file_path,
-  WebServerLog::Services::Parsers::UniqParser,
   WebServerLog::Presenters::LineEntities::UniqPresenter
 )
