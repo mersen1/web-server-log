@@ -3,7 +3,7 @@
 module WebServerLog
   module Services
     module Parsers
-      class Base
+      class LineParser
         extend Extensions::Executable
 
         def initialize(line)
@@ -11,7 +11,7 @@ module WebServerLog
         end
 
         def execute
-          raise NotImplementedError
+          [path, ip]
         end
 
         private

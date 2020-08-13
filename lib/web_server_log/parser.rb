@@ -13,20 +13,14 @@ module WebServerLog
 
     private_class_method :new
 
-    def initialize(file, parser, presenter, sorter = nil)
+    def initialize(file, presenter, sorter = nil)
       @file = file
-      @parser = parser
       @presenter = presenter
       @sorter = sorter
     end
 
     def execute
-      file.each do |line|
-        path, ip = parser.execute(line)
-        product = repository.add_if_not_exists(path, ip)
-        Services::LineEntities::IncrementVisitsCount.execute(product)
-      end
-      presenter.execute(repository.sort!.products)
+      raise NotImplementedError
     end
 
     private

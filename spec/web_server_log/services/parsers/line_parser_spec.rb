@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-describe WebServerLog::Services::Parsers::OrdinaryParser do
+describe WebServerLog::Services::Parsers::LineParser do
   context '#execute' do
     let!(:line) { '/help_page/1 200.017.277.774' }
 
     subject { described_class.new(line).execute }
 
-    it 'returns array with path' do
-      is_expected.to eq(['/help_page/1'])
+    it 'returns array with path + ip' do
+      is_expected.to eq(%w[/help_page/1 200.017.277.774])
     end
   end
 end
