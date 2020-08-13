@@ -33,7 +33,7 @@ module WebServerLog
       end
 
       def find_by_path_and_ip(product_path, product_ip)
-        products.detect { |product| product.path == product_path && product.ip == product_ip }
+        products.detect { |product| product.path == product_path && product.ips.include?(product_ip) }
       end
     end
   end
