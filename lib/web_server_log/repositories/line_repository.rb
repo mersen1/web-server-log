@@ -31,13 +31,13 @@ module WebServerLog
         products.detect { |product| product.path == product_path }
       end
 
-      private
-
-      attr_reader :sorter
-
       def find_by_path_and_ip(product_path, product_ip)
         products.detect { |product| product.path == product_path && product.ips.include?(product_ip) }
       end
+
+      private
+
+      attr_reader :sorter
     end
   end
 end

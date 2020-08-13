@@ -11,6 +11,14 @@ module WebServerLog
         @ips = [ip]
         @visits = 0
       end
+
+      def add_ip(ip)
+        ips.push(ip)
+      end
+
+      def increment_visits!
+        self.visits += 1
+      end
     end
   end
 end
